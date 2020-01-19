@@ -5,6 +5,13 @@ import asyncio
 messages = joined = 0
 
 
+def read_token(): # hides token
+    with open("token.txt", "r") as f:
+        lines = f.readlines()
+        return lines[0].strip()
+
+token = read_token()
+
 client = discord.Client()
 
 
@@ -78,6 +85,6 @@ async def on_message(message):
 
 
 client.loop.create_task(update_stats()) # allows function to run in the background
-client.run("NjY3OTE3MDQwNzA2NjUwMTUz.XiM3Gw.ww4Dm-G6Q5kFC1RQzEq8rEzn7IU")
+client.run(token)
 
 
